@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>血字圣诞</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="snow-layer"></div>
+<div id="vignette-layer"></div>
+<div id="grain-layer"></div>
+
+<div id="app">
+
+  <!-- ============ 标题画面 ============ -->
+  <section class="screen active" id="screen-title">
+    <div class="title-card">
+      <div class="title-deco">❄ 🩸 ❄</div>
+      <h1>血字圣诞</h1>
+      <p class="subtitle">——李智颖探案录之一</p>
+      <button class="btn btn-primary" id="btn-start">开始阅读</button>
+    </div>
+  </section>
+
+  <!-- ============ 章节标题卡 ============ -->
+  <section class="screen" id="screen-chapter">
+    <div class="chapter-card">
+      <div class="chapter-title" id="chapter-title"></div>
+      <div class="chapter-subtitle" id="chapter-subtitle"></div>
+      <div class="chapter-hint">点击继续</div>
+    </div>
+  </section>
+
+  <!-- ============ 小说 / 对话阅读画面 ============ -->
+  <section class="screen" id="screen-vn">
+    <div class="scene-bg" id="vn-bg"></div>
+    <div class="dialogue-box" id="vn-box">
+      <div class="speaker-name" id="vn-speaker"></div>
+      <div class="dialogue-text" id="vn-text"></div>
+      <div class="next-indicator">▶</div>
+    </div>
+  </section>
+
+  <!-- ============ 命案现场调查 ============ -->
+  <section class="screen" id="screen-investigate">
+    <div class="scene-bg scene-bg-scene">
+      <div class="hotspot" data-clue="ring" style="left:50%; top:74%;"></div>
+      <div class="hotspot" data-clue="letter" style="left:36%; top:82%;"></div>
+      <div class="hotspot" data-clue="wine" style="left:9%; top:44%;"></div>
+      <div class="hotspot" data-clue="shoe" style="left:71%; top:74%;"></div>
+      <div class="hotspot" data-clue="fiber" style="left:16%; top:30%;"></div>
+      <div class="hotspot" data-clue="blood" style="left:54%; top:17%;"></div>
+    </div>
+
+    <div class="hud-top">
+      <div class="progress-tag">已调查 <span id="clue-count">0</span> / 6</div>
+    </div>
+
+    <div class="scene-caption">点击房间中的物品，仔细检查命案现场</div>
+
+    <button class="btn btn-primary btn-proceed" id="btn-to-next-inv" disabled>好了，回到现场对话 →</button>
+  </section>
+
+  <!-- ============ 死亡留言解谜 ============ -->
+  <section class="screen" id="screen-puzzle">
+    <div class="scene-bg scene-bg-wall dim"></div>
+    <div class="puzzle-wrap">
+      <h2 class="puzzle-title">墙上的血痕</h2>
+      <p class="puzzle-lead">用手电筒从侧面照射，血痕会因干燥程度不同而显出深浅。<br>依序点击血痕中的三个区块，还原它真正的笔顺。</p>
+
+      <div class="blood-mark" id="blood-mark">
+        <img class="blood-mark-photo" src="assets/blood-mark.png" alt="墙上暗红色的字">
+
+        <div class="stroke-hit" data-region="1" style="clip-path:polygon(36.44% 18.15%, 68.53% 8.53%, 68.13% 4.31%, 36.05% 13.93%);"></div>
+        <div class="stroke-hit" data-region="1" style="clip-path:polygon(35.08% 15.66%, 29.73% 69.14%, 32.07% 69.90%, 37.41% 16.42%);"></div>
+        <div class="stroke-hit" data-region="2" style="clip-path:polygon(50.26% 24.59%, 67.19% 43.31%, 68.28% 40.12%, 51.35% 21.40%);"></div>
+        <div class="stroke-hit" data-region="2" style="clip-path:polygon(67.72% 21.48%, 51.08% 43.41%, 52.31% 46.43%, 68.94% 24.50%);"></div>
+        <div class="stroke-hit" data-region="3" style="clip-path:polygon(49.77% 44.75%, 48.28% 74.70%, 50.35% 75.03%, 51.84% 45.09%);"></div>
+        <div class="stroke-hit" data-region="3" style="clip-path:polygon(41.41% 83.40%, 68.15% 90.88%, 68.51% 86.66%, 41.78% 79.17%);"></div>
+
+        <div class="zhuyin-reveal" id="zhuyin-1" style="left:12%; top:6%;">ㄏ</div>
+        <div class="zhuyin-reveal" id="zhuyin-2" style="left:74%; top:26%;">ㄨ</div>
+        <div class="zhuyin-reveal" id="zhuyin-3" style="left:74%; top:66%;">ㄤ</div>
+      </div>
+
+      <div class="puzzle-progress" id="puzzle-progress">已还原 0 / 3 笔</div>
+      <button class="btn btn-primary btn-proceed" id="btn-to-next-puzzle" disabled>说出这个字 →</button>
+    </div>
+  </section>
+
+  <!-- ============ 信封 ============ -->
+  <section class="screen" id="screen-envelope">
+    <div class="scene-bg scene-bg-room"></div>
+    <div class="envelope" id="envelope">
+      <div class="envelope-flap"></div>
+      <div class="envelope-body">深红色信封</div>
+    </div>
+    <p class="envelope-hint">点击信封，拆开它</p>
+  </section>
+
+  <!-- ============ 信件 ============ -->
+  <section class="screen" id="screen-letter">
+    <div class="scene-bg scene-bg-room dim"></div>
+    <div class="letter-paper">
+      <div class="letter-to">亲爱的智颖：</div>
+      <div class="letter-body" id="letter-body"></div>
+      <div class="letter-sign">——黃致瑋</div>
+    </div>
+    <button class="btn btn-primary btn-proceed" id="btn-close-letter">把卡片放回信封 →</button>
+  </section>
+
+  <!-- ============ 结局 ============ -->
+  <section class="screen" id="screen-end">
+    <div class="scene-bg scene-bg-room"></div>
+    <div class="end-card">
+      <div class="end-deco">❄ 🩸 ❄</div>
+      <h2>全篇完</h2>
+      <p class="end-text">那是整桩案件中唯一没有沾上鲜血的红色，<br>也是那年圣诞节，她保存最久的一件证物。</p>
+      <button class="btn btn-small" id="btn-restart">重新阅读</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- 全局证据栏开关（游戏开始后常驻） -->
+<button class="btn btn-small evidence-toggle-btn" id="btn-evidence-toggle">证据栏 📒</button>
+
+<div class="evidence-panel" id="evidence-panel">
+  <div class="evidence-panel-header">
+    <span>证据栏</span>
+  </div>
+  <div class="evidence-list" id="evidence-list"></div>
+</div>
+
+<!-- 检查弹窗（调查现场 / 解谜共用） -->
+<div class="examine-overlay" id="examine-overlay">
+  <div class="examine-box">
+    <div class="examine-title" id="examine-title"></div>
+    <img class="examine-image" id="examine-image" alt="">
+    <div class="examine-text" id="examine-text"></div>
+    <button class="btn btn-small" id="btn-examine-close">好的</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
