@@ -75,19 +75,76 @@ html,body{
 }
 .scene-bg-room{
   background:
-    linear-gradient(180deg, rgba(6,7,12,.15) 0%, rgba(6,7,12,.75) 100%),
-    url("assets/bg-apartment.jpg"),
-    radial-gradient(ellipse at 30% 20%, rgba(31,64,48,.25), transparent 50%),
-    radial-gradient(ellipse at 75% 75%, rgba(163,35,59,.15), transparent 55%),
+    url("assets/bg-apartment.png"),
+    radial-gradient(ellipse at 30% 20%, rgba(31,64,48,.2), transparent 50%),
     linear-gradient(180deg,#181a2c 0%,#0b0c14 75%);
-  background-size:cover,cover,auto,auto,auto;
-  background-position:center,center,center,center,center;
+  background-size:cover,auto,auto;
+  background-position:center,center,center;
+}
+.scene-bg-case-photo{
+  background:
+    url("assets/bg-case-photo.png"),
+    radial-gradient(ellipse at 50% 20%, rgba(31,64,48,.18), transparent 55%),
+    linear-gradient(180deg,#181a2c 0%,#0b0c14 75%);
+  background-size:cover,auto,auto;
+  background-position:center,center,center;
+}
+.scene-bg-rain-house{
+  background:
+    url("assets/bg-rain-house.png"),
+    radial-gradient(ellipse at 50% 20%, rgba(20,40,70,.2), transparent 55%),
+    linear-gradient(180deg,#0d1420 0%,#080a10 80%);
+  background-size:cover,auto,auto;
+  background-position:center,center,center;
 }
 .scene-bg-scene{
+  margin:auto;
+  width:min(100%, calc(100vh * 16 / 9));
+  height:min(100%, calc(100vw * 9 / 16));
   background:
     url("assets/bg-crime-scene.png"),
     radial-gradient(ellipse at 50% 15%, rgba(163,35,59,.18), transparent 55%),
     linear-gradient(180deg,#15121a 0%,#0a0910 80%);
+  background-size:contain,auto,auto;
+  background-position:center,center,center;
+}
+.scene-bg-investigation{
+  background:
+    url("assets/bg-investigation.png"),
+    radial-gradient(ellipse at 50% 15%, rgba(163,35,59,.15), transparent 55%),
+    linear-gradient(180deg,#15121a 0%,#0a0910 80%);
+  background-size:cover,auto,auto;
+  background-position:center,center,center;
+}
+.scene-bg-car{
+  background:
+    url("assets/bg-car.png"),
+    radial-gradient(ellipse at 50% 20%, rgba(20,40,70,.18), transparent 55%),
+    linear-gradient(180deg,#0d1420 0%,#080a10 80%);
+  background-size:cover,auto,auto;
+  background-position:center,center,center;
+}
+.scene-bg-confrontation{
+  background:
+    url("assets/bg-confrontation.png"),
+    radial-gradient(ellipse at 50% 15%, rgba(163,35,59,.15), transparent 55%),
+    linear-gradient(180deg,#15121a 0%,#0a0910 80%);
+  background-size:cover,auto,auto;
+  background-position:center,center,center;
+}
+.scene-bg-flashback{
+  background:
+    url("assets/bg-flashback.png"),
+    radial-gradient(ellipse at 50% 20%, rgba(20,40,70,.22), transparent 55%),
+    linear-gradient(180deg,#0a0e18 0%,#06070c 80%);
+  background-size:cover,auto,auto;
+  background-position:center,center,center;
+}
+.scene-bg-ending{
+  background:
+    url("assets/bg-ending.png"),
+    radial-gradient(ellipse at 30% 20%, rgba(217,192,138,.18), transparent 55%),
+    linear-gradient(180deg,#181a2c 0%,#0b0c14 75%);
   background-size:cover,auto,auto;
   background-position:center,center,center;
 }
